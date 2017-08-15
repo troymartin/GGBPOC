@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Log on</h2>
+<input type="button" id="load" value="Load LogOn"/>
+<br/>
+<br/>
+
+    <form data-model="LogOnViewModel" class="jsonForm" data-bind="visible:viewModels.FormViewModel.FormElements().length > 0,action:viewModels.FormViewModel.ActionName,method:viewModels.FormViewModel.Method">
+        <input type="hidden" data-bind="attr:{name:'AccessToken',value:viewModels.FormViewModel.AccessToken}" />
+        <div data-bind="foreach: viewModels.FormViewModel.FormElements">
+            <!-- ko if: Required -->
+            <span data-bind="text:Title"></span>:
+            <!-- ko if: IsText -->
+            <input type="text" data-bind="attr:{name:Name,value:Value}" />
+            <!-- /ko-->
+            <!-- ko if: IsCheckBox -->
+            <input type="radio" data-bind="attr:{name:Name,value:Value}" />
+            <!-- /ko-->
+            <br />
+            <!-- /ko-->
+        </div>
+        <input type="submit" value="Submit" />
+    </form>
+
+
+
+
+
